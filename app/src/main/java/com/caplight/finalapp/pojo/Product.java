@@ -19,6 +19,8 @@ public class Product implements Serializable {
     
     private String proImg;
 
+    public Product() {
+    }
 
     public Product(Integer id, String proName, Integer proPrice, String proImg) {
         this.id = id;

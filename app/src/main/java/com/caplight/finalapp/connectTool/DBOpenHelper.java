@@ -93,6 +93,7 @@ public class DBOpenHelper   {
         return null;
     }
 
+
     private static String getStringFromInputStream(InputStream is)
             throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -107,5 +108,7 @@ public class DBOpenHelper   {
         os.close();
         return state;
     }
+
+
 }
 

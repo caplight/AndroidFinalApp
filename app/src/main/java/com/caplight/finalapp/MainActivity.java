@@ -6,11 +6,16 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private   Button main_button;
     private Button shopcar_button;
     private Button me_button;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +26,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         main_button.setOnClickListener(this);
         shopcar_button.setOnClickListener(this);
         me_button.setOnClickListener(this);
-
+        //FragmentSwitch(R.layout.activity_index,new IndexActivity());
     }
 
     @Override
     public void onClick(View view) {
+     /*   fragmentTransaction.add(ViewId,fragment);// 或者fragmentTransaction.replace(ViewId,fragment);
+        fragmentTransaction.commit();*/
         Intent intent = new Intent();
         switch (view.getId()){
             case R.id.main_button:
@@ -45,5 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 main_button.setActivated(false);
                 break;
         }
+    }
+
+    public void FragmentSwitch(int contentId,Fragment fragment){
+        //Fragment开启
+         FragmentManager fragmentManager=getSupportFragmentManager();
+         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+         fragmentTransaction.replace(contentId,fragment);
+         fragmentTransaction.commit();
     }
 }
