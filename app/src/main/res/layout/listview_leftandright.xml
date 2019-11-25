@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/listView_proimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/lenven7000" />
+
+    <TextView
+        android:id="@+id/listView_proname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lenovo/联想小新14" />
+
+    <TextView
+        android:id="@+id/listView_proprice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#DC143C"
+        android:gravity="left"
+        android:text="￥3199" />
+</LinearLayout>
