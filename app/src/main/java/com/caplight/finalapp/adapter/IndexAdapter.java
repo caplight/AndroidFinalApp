@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.caplight.finalapp.R;
@@ -43,9 +44,7 @@ public class IndexAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
                     //初始化viewHoder
-
                     convertView=mInflater.inflate(R.layout.listview_leftandright,parent,false);
                     viewHoder=new ViewHoder();
                     viewHoder.listView_proimg=convertView.findViewById(R.id.listView_proimg);
@@ -56,13 +55,20 @@ public class IndexAdapter extends BaseAdapter {
                     viewHoder.listView_proimg.setImageBitmap(bitmapList.get(position));
                     viewHoder.listView_proprice.setText("￥"+product.getProPrice());
                     viewHoder.listView_proname.setText(""+product.getProName());
-                    return convertView;
+                    LinearLayout linearLayout=convertView.findViewById(R.id.item_listView);
+                    linearLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
+                        }
+                    });
+                    return convertView;
              }
     private class ViewHoder{
                  ImageView listView_proimg;
                  TextView listView_proname;
                  TextView listView_proprice;
     }
+
 
 }

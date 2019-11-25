@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         main_button.setOnClickListener(this);
         shopcar_button.setOnClickListener(this);
         me_button.setOnClickListener(this);
-        //FragmentSwitch(R.layout.activity_index,new IndexActivity());
+        //FragmentSwitch(new IndexActivity());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 main_button.setActivated(true);
                 shopcar_button.setActivated(false);
                 me_button.setActivated(false);
-
+                FragmentSwitch(new IndexActivity());
                 break;
             case R.id.shopcar_button:
                 shopcar_button.setActivated(true);
@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void FragmentSwitch(int contentId,Fragment fragment){
+    public void FragmentSwitch(Fragment fragment){
         //Fragment开启
          FragmentManager fragmentManager=getSupportFragmentManager();
          FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-         fragmentTransaction.replace(contentId,fragment);
+         fragmentTransaction.replace(R.id.Fragment1,fragment);
          fragmentTransaction.commit();
     }
 }
