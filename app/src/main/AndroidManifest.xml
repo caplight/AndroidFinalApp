@@ -16,7 +16,11 @@
         android:targetSandboxVersion="1"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".productXiJie"></activity>
+        <activity android:name=".ProductXiJie">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".IndexActivity" />
         <activity
             android:name=".LoginActivity"

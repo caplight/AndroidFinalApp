@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.caplight.finalapp.R;
@@ -15,11 +14,12 @@ import com.caplight.finalapp.pojo.Product;
 
 import java.util.List;
 
-public class IndexAdapter extends BaseAdapter {
+public class IndexAdapter extends BaseAdapter implements View.OnClickListener {
      private LayoutInflater mInflater;
      private List<Product> mDatas;
      private ViewHoder viewHoder=null;
      private List<Bitmap> bitmapList;
+     private InnerItemOnclickListener mListener;
     //MyAdapter需要一个Context，通过Context获得Layout.inflater，然后通过inflater加载item的布局
              public IndexAdapter(Context context, List<Product> datas,List<Bitmap> bimages) {
                  this.mInflater = LayoutInflater.from(context);
@@ -55,13 +55,7 @@ public class IndexAdapter extends BaseAdapter {
                     viewHoder.listView_proimg.setImageBitmap(bitmapList.get(position));
                     viewHoder.listView_proprice.setText("￥"+product.getProPrice());
                     viewHoder.listView_proname.setText(""+product.getProName());
-                    LinearLayout linearLayout=convertView.findViewById(R.id.item_listView);
-                    linearLayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
 
-                        }
-                    });
                     return convertView;
              }
     private class ViewHoder{
@@ -70,5 +64,17 @@ public class IndexAdapter extends BaseAdapter {
                  TextView listView_proprice;
     }
 
+    public interface InnerItemOnclickListener {
+        void itemClick(View v);
+    }
 
+    public void setOnInnerItemOnClickListener(InnerItemOnclickListener listener){
+        this.mListener=listener;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        mListener.itemClick(v);
+    }
 }

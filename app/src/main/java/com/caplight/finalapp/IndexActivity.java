@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IndexActivity extends Fragment {
+public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnclickListener, AdapterView.OnItemClickListener
+         {
     private ListView listViewLeft;
     private ListView listViewRight;
     private List<Product> productList=new ArrayList<Product>();
@@ -74,6 +76,18 @@ public class IndexActivity extends Fragment {
         return view;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.d("id1",""+view.getId());
+
+    }
+
+    @Override
+    public void itemClick(View v) {
+        Log.d("id",""+v.getId());
+
+    }
+
     //图片获取
     private  Bitmap getImageBitmap(String url) {
         Bitmap bm = null;
@@ -96,6 +110,8 @@ public class IndexActivity extends Fragment {
         indexAdapter=new IndexAdapter(getContext(),productList,bitmaps);
         //Log.e("product","List="+productList.get(0).getProName());
         listViewLeft.setAdapter(indexAdapter);
+        listViewLeft.setOnItemClickListener(this);
+        listViewRight.setOnItemClickListener(this);
         listViewRight.setAdapter(indexAdapter);
     }
 
