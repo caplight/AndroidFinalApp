@@ -90,6 +90,7 @@ public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnc
     @Override
     public void itemClick(int position) {
         Intent intent=new Intent(getActivity(),ProductXiJie.class);
+
         Bundle bundle=new Bundle();
         Product product=productList.get(position);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

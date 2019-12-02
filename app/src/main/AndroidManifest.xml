@@ -5,6 +5,11 @@
 
     <dist:module dist:instant="true" />
 
+    <!--自定义接收者权限-->
+    <permission android:name="com.thanlon.permission.name" />
+    <!--配置接收者权限-->
+    <uses-permission android:name="com.thanlon.permission.name" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +21,13 @@
         android:targetSandboxVersion="1"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <receiver android:name=".connectTool.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.thanlon.diyAction"/>
+            </intent-filter>
+        </receiver>
         <activity android:name=".StartActivity"
                     android:theme="@style/AppTheme.Launcher">
             <intent-filter>
@@ -40,6 +52,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

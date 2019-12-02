@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_button:
                 main_button.setActivated(true);
                 me_button.setActivated(false);
+
                switchContent(loginFragment,indexFragment);
                 break;
             case R.id.me_button:
