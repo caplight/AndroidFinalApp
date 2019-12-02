@@ -14,7 +14,7 @@ import com.caplight.finalapp.pojo.Product;
 
 import java.util.List;
 
-public class IndexAdapter extends BaseAdapter implements View.OnClickListener {
+public class IndexAdapter extends BaseAdapter{
      private LayoutInflater mInflater;
      private List<Product> mDatas;
      private ViewHoder viewHoder=null;
@@ -55,7 +55,12 @@ public class IndexAdapter extends BaseAdapter implements View.OnClickListener {
                     viewHoder.listView_proimg.setImageBitmap(bitmapList.get(position));
                     viewHoder.listView_proprice.setText("￥"+product.getProPrice());
                     viewHoder.listView_proname.setText(""+product.getProName());
-
+                    viewHoder.listView_proimg.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mListener.itemClick(position);
+                        }
+                    });
                     return convertView;
              }
     private class ViewHoder{
@@ -65,16 +70,11 @@ public class IndexAdapter extends BaseAdapter implements View.OnClickListener {
     }
 
     public interface InnerItemOnclickListener {
-        void itemClick(View v);
+        void itemClick(int position);
     }
 
     public void setOnInnerItemOnClickListener(InnerItemOnclickListener listener){
         this.mListener=listener;
     }
 
-
-    @Override
-    public void onClick(View v) {
-        mListener.itemClick(v);
-    }
 }

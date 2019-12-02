@@ -9,15 +9,16 @@
 
     <fragment
         android:id="@+id/Fragment1"
-        android:name="com.caplight.finalapp.IndexActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="99" />
+        android:layout_weight="99"
+        android:name="com.caplight.finalapp.IndexActivity"
+        />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250px"
         android:background="#d6d7d7"
         android:gravity="bottom"
         android:orientation="horizontal"
@@ -27,31 +28,23 @@
         <Button
             android:id="@+id/main_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/address_buttom"
             android:stateListAnimator="@null"
-            android:text="Contacts"
-            android:textSize="15dp" />
+            android:text="Index"
+            android:textSize="10dp" />
 
-        <Button
-            android:id="@+id/shopcar_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/find_buttom"
-            android:stateListAnimator="@null"
-            android:text="Discover"
-            android:textSize="15dp" />
+
 
         <Button
             android:id="@+id/me_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/settings_buttom"
             android:stateListAnimator="@null"
-            android:text="Me"
-            android:textSize="15dp" />
+            android:text="Sun"
+            android:textSize="10dp" />
     </LinearLayout>
 </LinearLayout>

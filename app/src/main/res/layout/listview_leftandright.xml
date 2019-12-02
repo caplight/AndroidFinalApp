@@ -10,7 +10,9 @@
     <ImageView
         android:id="@+id/listView_proimg"
         android:layout_width="wrap_content"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:focusable="false"
+        />
 
     <TextView
         android:id="@+id/listView_proname"
@@ -18,7 +20,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Lenovo/联想小新14"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:focusable="false"
+        />
 
     <TextView
         android:id="@+id/listView_proprice"
@@ -26,5 +30,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:text="￥3199"
-        android:textColor="#DC143C" />
+        android:textColor="#DC143C"
+        android:focusable="false"
+        />
 </LinearLayout>

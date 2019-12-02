@@ -1,5 +1,6 @@
 package com.caplight.finalapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -42,14 +44,15 @@ public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnc
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.activity_index,null);
+        View view=inflater.inflate(R.layout.activity_index,container,false);
          listViewLeft=view.findViewById(R.id.listViewLeft);
         listViewRight=view.findViewById(R.id.listViewRight);
         Thread thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
+                @Override
+                public void run() {
                 final String response = DBOpenHelper.get("/product/findAll");
                 // Log.e("product",response);
+
                 try {
                     JSONArray jsonArray=new JSONArray(response);
                     for (int i=0;i<jsonArray.length();i++){
@@ -60,10 +63,12 @@ public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnc
                         bitmaps.add(bimage);
                         productList.add(product);
                         flag=true;
+
                     }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+
             }
         });
         thread.start();
@@ -78,14 +83,24 @@ public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnc
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.d("id1",""+view.getId());
+        //Log.d("id1",""+view.getId());
 
     }
 
     @Override
-    public void itemClick(View v) {
-        Log.d("id",""+v.getId());
-
+    public void itemClick(int position) {
+        Intent intent=new Intent(getActivity(),ProductXiJie.class);
+        Bundle bundle=new Bundle();
+        Product product=productList.get(position);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bimage=bitmaps.get(position);
+        bimage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] bitmapByte = baos.toByteArray();
+        intent.putExtra("proImg", bitmapByte);
+        bundle.putString("proName",product.getProName());
+        bundle.putInt("proPrice",product.getProPrice());
+        intent.putExtra("mes",bundle);
+        startActivity(intent);
     }
 
     //图片获取
@@ -106,8 +121,10 @@ public class IndexActivity extends Fragment implements IndexAdapter.InnerItemOnc
         }
         return bm;
     }
+
     private void initAdapter(){
         indexAdapter=new IndexAdapter(getContext(),productList,bitmaps);
+        indexAdapter.setOnInnerItemOnClickListener(this);
         //Log.e("product","List="+productList.get(0).getProName());
         listViewLeft.setAdapter(indexAdapter);
         listViewLeft.setOnItemClickListener(this);

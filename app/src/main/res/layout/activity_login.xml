@@ -1,68 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginBottom="6dp"
-        android:text="用户名："
-        app:layout_constraintBottom_toBottomOf="@+id/userName"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/backgroud"
+        android:layout_width="429dp"
+        android:layout_height="638dp"
+        android:src="@drawable/mbecloud2" />
 
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="75dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:text="密码："
-        app:layout_constraintBaseline_toBaselineOf="@+id/passWord"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/passWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+            <TextView
+                android:id="@+id/street_name"
+                android:layout_width="190dp"
+                android:layout_height="46dp"
+                android:text="广州市增城区"
+                android:textColor="#000000"
+                android:textSize="25dp" />
 
-    <Button
-        android:id="@+id/loginSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="96dp"
-        android:text="登录"
-        app:layout_constraintStart_toStartOf="@+id/passWord"
-        app:layout_constraintTop_toBottomOf="@+id/passWord" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="92dp"
+                android:layout_height="46dp"
+                android:src="@drawable/location" />
 
+        </LinearLayout>
 
+        <TextView
+            android:id="@+id/winter_temp"
+            android:layout_width="112dp"
+            android:layout_height="98dp"
+            android:text="23°"
+            android:textColor="#000000"
+            android:textSize="45dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/winter_condition"
+            android:layout_width="161dp"
+            android:layout_height="36dp"
+            android:text="多云"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/winter_Dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="东北风3级"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/winter_update"
+            android:layout_width="339dp"
+            android:layout_height="214dp"
+            android:text="更新时间:2019-12-01 12:50:08"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</FrameLayout>
